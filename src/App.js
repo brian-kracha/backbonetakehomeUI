@@ -3,6 +3,10 @@ import Header from './components/header'
 import List from './components/list'
 import Toolbar from './components/toolbar'
 import Modal from './components/modal'
+import glass1 from './images/0tortoise2.jpeg'
+import glass2 from './images/1aviator.jpeg'
+import glass3 from './images/2matte.jpeg'
+import glass0 from './images/00goofy.jpeg'
 import './App.css'
 const API = "http://localhost:8000/products"
 class App extends Component {
@@ -12,9 +16,11 @@ class App extends Component {
   this.state = {
     show: false,
     products: [],
+    images: [glass0, glass1, glass2, glass3]
   }
+  this.hideModal = this.hideModal.bind(this)
   this.renderModal = this.renderModal.bind(this)
-  this.hideModal = this.renderModal.bind(this)
+
 }
   async componentDidMount(){
     let info = await fetch(API)
@@ -28,15 +34,15 @@ class App extends Component {
       show: true
     })
   }
-  async hideModal(){
-    if(this.state.show === true){
-    await  this.setState({
-        show: false
-      })
-    }
+  hideModal(){
+
+   this.setState({
+      show: false
+    })
   }
 
   createNewItem=async(item) =>{
+
         const response = await fetch(API, {
           method: 'POST',
           body: JSON.stringify({
@@ -74,6 +80,7 @@ class App extends Component {
         <List
         //assigning my props as state to then pass down to the list component
           list={ this.state.products }
+          image= {this.state.images}
         />
       </div>
     )

@@ -1,26 +1,27 @@
 import React from 'react'
-import { Table } from 'react-bootstrap'
+import { Table,Image } from 'react-bootstrap'
 import Item from './item'
-const List = ({list}) => {
+const List = ({list, image}) => {
   console.log(list)
   return(
     <Table responsive>
       <thead>
        <tr>
-         <th>Product</th>
-         <th ><small style={styles.tableRow}>Name</small></th>
-         <th><small>Price</small></th>
-         <th><small>Code</small></th>
-         <th><small>Created By</small></th>
-         <th><small>Last Modified</small></th>
+         <th><small style={styles.tableRow}>Product</small></th>
+         <th><small style={styles.tableRow}></small></th>
+         <th><small style={styles.tableRow}>Price</small></th>
+         <th><small style={styles.tableRow}>Code</small></th>
+         <th><small style={styles.tableRow}>Created By</small></th>
+         <th><small style={styles.tableRow}>Last Modified</small></th>
        </tr>
      </thead>
-     <tbody>
+     <tbody style= {styles.body}>
       {
         list.map(element => (
 
           <Item
-            key={element.id}
+            image= {image}
+            id={element.id}
             name= {element.name}
             code= {element.code}
             price={element.price.toFixed(2)}
@@ -35,8 +36,12 @@ const List = ({list}) => {
 }
 const styles = {
   tableRow: {
-    text: 'green'
+    color: 'grey',
+    fontSize:8,
+  },
+  body: {
+    justifyContent: 'space-between'
+  },
 
-  }
 }
 export default List
