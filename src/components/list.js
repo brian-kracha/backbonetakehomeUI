@@ -8,26 +8,35 @@ const List = ({list}) => {
       <thead>
        <tr>
          <th>Product</th>
-         <th><small>Name</small></th>
-         <th><small>Code</small></th>
+         <th ><small style={styles.tableRow}>Name</small></th>
          <th><small>Price</small></th>
-         <th><small>Creator</small></th>
+         <th><small>Code</small></th>
+         <th><small>Created By</small></th>
+         <th><small>Last Modified</small></th>
        </tr>
      </thead>
      <tbody>
       {
         list.map(element => (
+
           <Item
             key={element.id}
             name= {element.name}
             code= {element.code}
             price={element.price.toFixed(2)}
             creator= {element.creator}
+            modified= {element.last_modified}
           />
           )
         )
       }
     </tbody>
   </Table>)
+}
+const styles = {
+  tableRow: {
+    text: 'green'
+
+  }
 }
 export default List
