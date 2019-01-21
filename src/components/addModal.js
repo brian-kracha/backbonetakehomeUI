@@ -1,9 +1,34 @@
 import React from 'react'
-import { Modal,Button,Form, FormGroup, FormControl, ControlLabel, Checkbox, Col } from 'react-bootstrap'
-export default class ModalForm extends React.Component {
-  render() {
+import ReactDOM from'react-dom'
+import { Modal,Button,Form, FormGroup, ControlLabel, Col, } from 'react-bootstrap'
 
-    const { show, hideModal, createItem} = this.props
+const ModalForm = ({
+  show,
+  hideModal,
+  addItem,
+  createItem,
+  values,
+  nameChange,
+  priceChange,
+  codeChange,
+  creatorChange,
+  name,
+  price,
+  code,
+  creator }) => {
+
+
+  addItem= ()=>{
+
+    createItem({
+      name: name,
+      code: code,
+      price: price,
+      creator:  creator
+
+    })
+  }
+
 
     return (
       <Modal
@@ -11,26 +36,36 @@ export default class ModalForm extends React.Component {
         bsSize="small"
         aria-labelledby="contained-modal-title-sm"
       >
-        <Modal.Header closeButton onClick={hideModal}>
+        <Modal.Header >
           <Modal.Title id="contained-modal-title-sm">Modal heading</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <h4>Create a new item!</h4>
-          <Form horizontal onSubmit={createItem}>
+          <Form horizontal onSubmit={addItem}>
           <FormGroup controlId="formHorizontalName">
             <Col componentClass={ControlLabel} sm={3}>
               Name
             </Col>
             <Col sm={10}>
-              <FormControl type="text" placeholder="Name" refs="name" />
+              <input
+                type="text"
+                placeholder="Name"
+                value = {name}
+                onChange={nameChange}
+              />
             </Col>
           </FormGroup>
             <FormGroup controlId="formHorizontalPrice">
-              <Col componentClass={ControlLabel} sm={3}>
+              <Col componentClass={ControlLabel}  sm={3}>
                 Price
               </Col>
               <Col sm={10}>
-                <FormControl type="text" placeholder="123456" refs="price" />
+                <input
+                  type="text"
+                  placeholder="123456"
+                  value= {price}
+                  onChange= {priceChange}
+                />
               </Col>
             </FormGroup>
 
@@ -39,7 +74,12 @@ export default class ModalForm extends React.Component {
                 Code
               </Col>
               <Col sm={10}>
-                <FormControl type="text" placeholder="code" refs="code" />
+                <input
+                  type="text"
+                  placeholder="code"
+                  value = { code}
+                  onChange= {codeChange}
+                />
               </Col>
             </FormGroup>
 
@@ -48,7 +88,12 @@ export default class ModalForm extends React.Component {
                 Created By
               </Col>
               <Col sm={10}>
-                <FormControl type="text" placeholder="Hodor" refs="creator" />
+                <input
+                  type="text"
+                  placeholder="Hodor"
+                  value = {creator}
+                  onChange= {creatorChange}
+                />
               </Col>
             </FormGroup>
 
@@ -65,5 +110,6 @@ export default class ModalForm extends React.Component {
         </Modal.Footer>
       </Modal>
     )
-  }
+
 }
+export default ModalForm

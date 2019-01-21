@@ -3,13 +3,11 @@ import { Nav, NavItem } from 'react-bootstrap'
 
 const navInstance =({createItem,renderModal,show}) => {
   return (
-    <Nav bsStyle="pills" activeKey={1} show= {show}  onClick={renderModal}>
-      <NavItem eventKey={1} >
+    <Nav bsStyle="pills" activeKey={1} show= {show}  >
+      <NavItem eventKey={1} onClick={renderModal}>
         Add Item
       </NavItem>
-      <NavItem eventKey={2} >
-        Delete Item
-      </NavItem>
+
     </Nav>
 
   )

@@ -1,7 +1,7 @@
 import React from 'react'
-import { Table,Image } from 'react-bootstrap'
+import { Table } from 'react-bootstrap'
 import Item from './item'
-const List = ({list, image}) => {
+const List = ({list, image,checked,onCheck}) => {
   console.log(list)
   return(
     <Table responsive>
@@ -20,6 +20,7 @@ const List = ({list, image}) => {
         list.map(element => (
 
           <Item
+            key={element.id}
             image= {image}
             id={element.id}
             name= {element.name}
@@ -27,6 +28,8 @@ const List = ({list, image}) => {
             price={element.price.toFixed(2)}
             creator= {element.creator}
             modified= {element.last_modified}
+            checked = {checked}
+            onCheck= { onCheck}
           />
           )
         )

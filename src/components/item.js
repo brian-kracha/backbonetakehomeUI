@@ -1,5 +1,5 @@
 import React from 'react'
-import {Image } from 'react-bootstrap'
+import { Image } from 'react-bootstrap'
 const Item = ({ id, name, code, price, creator, modified,image }) => {
 
   let time =timeConverter(modified)
@@ -16,16 +16,13 @@ const Item = ({ id, name, code, price, creator, modified,image }) => {
   )
 }
 function timeConverter(UNIX_timestamp){
-  var a = new Date(UNIX_timestamp * 1000);
-  var months = ['January','Febuary','March','April','May','June','July','August','September','October','November','December'];
-  var year = a.getFullYear();
-  var month = months[a.getMonth()];
-  var date = a.getDate();
-  var hour = a.getHours();
-  var min = a.getMinutes();
-  var sec = a.getSeconds();
+  var a = new Date(UNIX_timestamp * 1000)
+  var months = ['January','Febuary','March','April','May','June','July','August','September','October','November','December']
+  var year = a.getFullYear()
+  var month = months[a.getMonth()]
+  var date = a.getDate()
   var time = date + ' ' + month + ' ' + year
-  return time;
+  return time
 }
 
 
